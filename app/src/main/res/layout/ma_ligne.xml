@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+  >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="122dp"
+        android:background="#ce9422"
+        android:paddingBottom="@dimen/abc_action_bar_icon_vertical_padding_material">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/nomMatiere"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#2469e0"
+            android:textStyle="bold"
+            android:paddingTop="@dimen/abc_action_bar_content_inset_material"
+            android:paddingBottom="@dimen/abc_action_bar_overflow_padding_end_material" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="@dimen/abc_action_bar_icon_vertical_padding_material"
+            android:paddingBottom="@dimen/abc_action_bar_icon_vertical_padding_material">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="DS"
+                android:id="@+id/DsNote"
+                android:paddingLeft="@dimen/abc_action_bar_progress_bar_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="TP"
+                android:id="@+id/TpNote"
+                android:paddingLeft="@dimen/abc_action_bar_progress_bar_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Examen"
+                android:id="@+id/ExamenNote"
+                android:paddingLeft="@dimen/abc_action_bar_progress_bar_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Moyenne"
+                android:id="@+id/Moyenne"
+                android:paddingLeft="@dimen/abc_action_bar_progress_bar_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="@dimen/abc_action_bar_icon_vertical_padding_material">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="0"
+                android:id="@+id/textView"
+                android:paddingLeft="@dimen/abc_action_bar_stacked_max_height" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="0"
+                android:id="@+id/textView2"
+                android:paddingLeft="@dimen/abc_action_bar_stacked_max_height" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="0"
+                android:id="@+id/textView3"
+                android:paddingLeft="@dimen/abc_action_bar_stacked_max_height"
+                android:paddingRight="@dimen/abc_action_bar_stacked_max_height" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="0"
+                android:id="@+id/textView4"
+                android:paddingLeft="@dimen/abc_action_bar_stacked_max_height" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

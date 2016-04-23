@@ -16,6 +16,9 @@ import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import butterknife.ButterKnife;
 import butterknife.Bind;
 
@@ -82,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = _passwordText.getText().toString();
 
         // TODO: Implement your own authentication logic here.
-        Firebase ref = new Firebase("https://luminous-heat-8924.firebaseio.com/");
+        final Firebase ref = new Firebase("https://luminous-heat-8924.firebaseio.com/");
 
            /* ref.addAuthStateListener(new Firebase.AuthStateListener() {
                 @Override
@@ -101,10 +104,30 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAuthenticated(AuthData authData) {
                 System.out.println("loggggggggggged");
+                // Authentication just completed successfully :)
+                Map<String, String> map = new HashMap<>();
+                map.put("provider", authData.getProvider());
+                if(authData.getProviderData().containsKey("displayName")) {
+                    map.put("displayName", authData.getProviderData().get("displayName").toString());
+                }
+                ref.child("users").child(authData.getUid()).setValue(map);
             }
             @Override
             public void onAuthenticationError(FirebaseError firebaseError) {
                 System.out.println("not loggggged");
+
+                // Something went wrong :(
+                switch (firebaseError.getCode()) {
+                    case FirebaseError.USER_DOES_NOT_EXIST:
+                        // handle a non existing user
+                        break;
+                    case FirebaseError.INVALID_PASSWORD:
+                        // handle an invalid password
+                        break;
+                    default:
+                        // handle other errors
+                        break;
+                }
             }
         };
 // Authenticate users with a custom Firebase token
