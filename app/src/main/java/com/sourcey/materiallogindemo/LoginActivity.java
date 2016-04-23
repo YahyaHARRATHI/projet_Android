@@ -12,12 +12,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.AuthData;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
 import butterknife.ButterKnife;
 import butterknife.Bind;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
+
+    public Firebase myFirebaseRef;
 
     @Bind(R.id.input_email) EditText _emailText;
     @Bind(R.id.input_password) EditText _passwordText;
@@ -28,6 +34,9 @@ public class LoginActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Firebase.setAndroidContext(this);
+
         ButterKnife.bind(this);
         
         _loginButton.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +63,10 @@ public class LoginActivity extends AppCompatActivity {
 
         if (!validate()) {
             onLoginFailed();
+
+
+
+
             return;
         }
 
@@ -69,12 +82,43 @@ public class LoginActivity extends AppCompatActivity {
         String password = _passwordText.getText().toString();
 
         // TODO: Implement your own authentication logic here.
+        Firebase ref = new Firebase("https://luminous-heat-8924.firebaseio.com/");
+
+           /* ref.addAuthStateListener(new Firebase.AuthStateListener() {
+                @Override
+                public void onAuthStateChanged(AuthData authData) {
+                    if (authData != null) {
+                        // user is logged in
+                    } else {
+                        // user is not logged in
+                    }
+                }
+            });
+
+*/
+        // Create a handler to handle the result of the authentication
+        Firebase.AuthResultHandler authResultHandler = new Firebase.AuthResultHandler() {
+            @Override
+            public void onAuthenticated(AuthData authData) {
+                System.out.println("loggggggggggged");
+            }
+            @Override
+            public void onAuthenticationError(FirebaseError firebaseError) {
+                System.out.println("not loggggged");
+            }
+        };
+// Authenticate users with a custom Firebase token
+        //      ref.authWithCustomToken("<token>", authResultHandler);
+// Alternatively, authenticate users anonymously
+        // ref.authAnonymously(authResultHandler);
+// Or with an email/password combination
+        ref.authWithPassword(email, password, authResultHandler);
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
                         // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
+                        ////////////////::onLoginSuccess();
                         // onLoginFailed();
                         progressDialog.dismiss();
                     }
@@ -124,8 +168,8 @@ public class LoginActivity extends AppCompatActivity {
             _emailText.setError(null);
         }
 
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("between 4 and 10 alphanumeric characters");
+        if (password.isEmpty() || password.length() < 6 || password.length() > 50) {
+            _passwordText.setError("between 6 and 50 alphanumeric characters");
             valid = false;
         } else {
             _passwordText.setError(null);
