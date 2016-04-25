@@ -104,13 +104,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAuthenticated(AuthData authData) {
                 System.out.println("loggggggggggged");
-                // Authentication just completed successfully :)
-                Map<String, String> map = new HashMap<>();
-                map.put("provider", authData.getProvider());
-                if(authData.getProviderData().containsKey("displayName")) {
-                    map.put("displayName", authData.getProviderData().get("displayName").toString());
-                }
-                ref.child("users").child(authData.getUid()).setValue(map);
+
+               /* Intent myIntent = new Intent(this, listMatiereActivity.class);
+
+                myIntent.putExtra("cle", "valeur");
+
+                startActivity(myIntent);
+*/
+
             }
             @Override
             public void onAuthenticationError(FirebaseError firebaseError) {
