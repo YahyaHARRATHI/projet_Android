@@ -17,11 +17,12 @@ import com.firebase.ui.FirebaseListAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class listMatiereActivity extends ListActivity {
+public class listMatiereActivity extends AppCompatActivity {
     public Firebase myFirebaseRef;
+
     public TextView text3;
     public TextView text4;
-    public FirebaseListAdapter<Matiere> matiereFirebaseListAdapter;
+    public FirebaseListAdapter<Module> matiereFirebaseListAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +30,22 @@ public class listMatiereActivity extends ListActivity {
 
        //get data from fireBase
         Firebase.setAndroidContext(this);
-        myFirebaseRef = new Firebase("https://luminous-heat-8924.firebaseio.com/");
+        myFirebaseRef = new Firebase("https://luminous-heat-8924.firebaseio.com/etudiant/modules");
 
 
+        final ListView listView=(ListView) findViewById(R.id.listView);
 
+        matiereFirebaseListAdapter=new FirebaseListAdapter<Module>(this,Module.class,
+                android.R.layout.two_line_list_item,myFirebaseRef) {
+            @Override
+            protected void populateView(View view, Module module, int i) {
+                ((TextView)view.findViewById(android.R.id.text1)).setText("Ds : " + module.getMatieres().get(i).getDs() +
+                        "    tp : "+module.getMatieres().get(i).getTp());
+                ((TextView)view.findViewById(android.R.id.text2)).setText(" examen "+module.getMatieres().get(i).getExamen()+"");
+            }
+        };
+
+        listView.setAdapter(matiereFirebaseListAdapter);
 
         /*
         listView.setAdapter(matiereFirebaseListAdapter);

@@ -105,12 +105,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthenticated(AuthData authData) {
                 System.out.println("loggggggggggged");
 
-               /* Intent myIntent = new Intent(this, listMatiereActivity.class);
+                Intent myIntent = new Intent(LoginActivity.this,listMatiereActivity.class);
 
-                myIntent.putExtra("cle", "valeur");
+
 
                 startActivity(myIntent);
-*/
+
 
             }
             @Override
