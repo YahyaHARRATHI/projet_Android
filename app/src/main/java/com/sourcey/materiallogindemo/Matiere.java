@@ -7,7 +7,16 @@ public class Matiere {
     private double tp;
     private double ds;
     private double examen;
-    private double moyenne;
+    private double moyenneMatiere;
+    private String libelle;
+
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
 
     public Matiere() {
     }
@@ -17,11 +26,12 @@ public class Matiere {
         return super.toString();
     }
 
-    public Matiere(double tp, double ds, double examen, double moyenne) {
+    public Matiere(double tp, double ds, double examen, double moyenne,String libelle) {
         this.tp = tp;
         this.ds = ds;
         this.examen = examen;
-        this.moyenne = moyenne;
+        this.moyenneMatiere = moyenne;
+        this.libelle=libelle;
     }
 
     public double getTp() {
@@ -36,8 +46,8 @@ public class Matiere {
 
 
 
-    public double getMoyenne() {
-        return moyenne;
+    public double getMoyenneMatiere() {
+        return moyenneMatiere;
     }
 
 

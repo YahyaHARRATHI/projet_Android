@@ -19,10 +19,11 @@ import java.util.List;
 
 public class listMatiereActivity extends AppCompatActivity {
     public Firebase myFirebaseRef;
-
+public String uid;
+    public String module;
     public TextView text3;
     public TextView text4;
-    public FirebaseListAdapter<Module> matiereFirebaseListAdapter;
+    public FirebaseListAdapter<Matiere> matiereFirebaseListAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,63 +31,25 @@ public class listMatiereActivity extends AppCompatActivity {
 
        //get data from fireBase
         Firebase.setAndroidContext(this);
-        myFirebaseRef = new Firebase("https://luminous-heat-8924.firebaseio.com/etudiant/modules");
+        uid=getIntent().getStringExtra("uid");
+         module=getIntent().getStringExtra("module");
+        myFirebaseRef = new Firebase("https://luminous-heat-8924.firebaseio.com/"+uid+"/modules/"+module+"/matieres");
 
 
         final ListView listView=(ListView) findViewById(R.id.listView);
 
-        matiereFirebaseListAdapter=new FirebaseListAdapter<Module>(this,Module.class,
+        matiereFirebaseListAdapter=new FirebaseListAdapter<Matiere>(this,Matiere.class,
                 android.R.layout.two_line_list_item,myFirebaseRef) {
             @Override
-            protected void populateView(View view, Module module, int i) {
-                ((TextView)view.findViewById(android.R.id.text1)).setText("Ds : " + module.getMatieres().get(i).getDs() +
-                        "    tp : "+module.getMatieres().get(i).getTp());
-                ((TextView)view.findViewById(android.R.id.text2)).setText(" examen "+module.getMatieres().get(i).getExamen()+"");
+            protected void populateView(View view, Matiere mat, int i) {
+                ((TextView)view.findViewById(android.R.id.text1)).setText(mat.getLibelle()+"          Ds : " + mat.getDs() +
+                        "             tp : " + mat.getTp());
+                ((TextView)view.findViewById(android.R.id.text2)).setText("                        examen : "+mat.getExamen()+ "          Moyenne : " +mat.getMoyenneMatiere());
             }
         };
 
         listView.setAdapter(matiereFirebaseListAdapter);
 
-        /*
-        listView.setAdapter(matiereFirebaseListAdapter);
 
-
-        // creta our layout s
-        final List<Matiere> matList=new ArrayList<>();
-
-        class IconicAdapter extends ArrayAdapter<Matiere> {
-            Activity context;
-            IconicAdapter(Activity context) {
-                super(context, R.layout.ma_ligne, matList);
-                this.context = context;
-            }
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                LayoutInflater inflater = context.getLayoutInflater();
-                View ligne = inflater.inflate(R.layout.ma_ligne, null);
-                TextView nomMatiere = (TextView) ligne.findViewById(R.id.nomMatiere);
-                TextView DsNote = (TextView) ligne.findViewById(R.id.DsNote);
-                TextView TpNote = (TextView) ligne.findViewById(R.id.TpNote);
-                TextView ExamenNote = (TextView) ligne.findViewById(R.id.ExamenNote);
-                TextView Moyenne = (TextView) ligne.findViewById(R.id.Moyenne);
-
-                label.setText(items.get(position));
-
-                return ligne;
-            }
-        }
-
-
-        final ListView listView=(ListView) findViewById(R.id.listView);
-        matiereFirebaseListAdapter=new FirebaseListAdapter<Matiere>(this,Matiere.class,
-                new IconicAdapter(this),myFirebaseRef) {
-            @Override
-            protected void populateView(View view, Matiere matiere, int i) {
-                ((TextView)view.findViewById(android.R.id.text1)).setText(Double.toString(matiere.getTp()));
-                ((TextView)view.findViewById(android.R.id.text2)).setText(Double.toString(matiere.getDs()));
-
-            }
-        };
-*/
     }
 }

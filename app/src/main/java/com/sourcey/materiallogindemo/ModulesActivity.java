@@ -1,6 +1,7 @@
 package com.sourcey.materiallogindemo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,6 +30,7 @@ public class ModulesActivity extends AppCompatActivity {
     public Firebase myFirebaseRef;
     public TextView textViewNom;
     public  List<String> modules;
+    public String uid;
     public ListView listViewModules;
     FirebaseListAdapter<String> ModuleFirebaseListAdapter;
     @Override
@@ -40,7 +42,7 @@ public class ModulesActivity extends AppCompatActivity {
 
        // System.out.println(getIntent().getStringExtra("uid"));
          myFirebaseRef = new Firebase("https://luminous-heat-8924.firebaseio.com");
-        String uid=getIntent().getStringExtra("uid");
+         uid=getIntent().getStringExtra("uid");
         myFirebaseRef.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -83,7 +85,11 @@ public class ModulesActivity extends AppCompatActivity {
             Toast.makeText(ModulesActivity.this, "Item " + (position + 1) + ": " +
                     ((TextView) v).getText(), Toast.LENGTH_LONG).show();
             String m= (String) ((TextView) v).getText();
-            System.out.println(m);
+            Intent myIntent = new Intent(ModulesActivity.this,listMatiereActivity.class);
+
+            myIntent.putExtra("module",m);
+            myIntent.putExtra("uid",uid);
+            startActivity(myIntent);
         }
 
 
