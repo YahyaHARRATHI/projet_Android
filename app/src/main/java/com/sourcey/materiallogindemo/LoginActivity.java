@@ -103,12 +103,12 @@ public class LoginActivity extends AppCompatActivity {
         Firebase.AuthResultHandler authResultHandler = new Firebase.AuthResultHandler() {
             @Override
             public void onAuthenticated(AuthData authData) {
-                System.out.println("loggggggggggged");
+               // System.out.println("loggggggggggged");
+                String uid=(String)authData.getUid();
+                Intent myIntent = new Intent(LoginActivity.this,ModulesActivity.class);
 
-                Intent myIntent = new Intent(LoginActivity.this,listMatiereActivity.class);
 
-
-
+                    myIntent.putExtra("uid",uid);
                 startActivity(myIntent);
 
 
