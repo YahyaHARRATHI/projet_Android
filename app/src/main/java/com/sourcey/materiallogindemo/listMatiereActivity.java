@@ -52,4 +52,10 @@ public String uid;
 
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        matiereFirebaseListAdapter.cleanup();
+    }
 }

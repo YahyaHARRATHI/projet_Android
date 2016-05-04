@@ -25,7 +25,7 @@
             android:name=".SignupActivity"
             android:theme="@style/AppTheme.Dark" />
         <activity android:name=".listMatiereActivity" />
-        <activity android:name=".ModulesActivity"></activity>
+        <activity android:name=".ModulesActivity" />
     </application>
 
 </manifest>
