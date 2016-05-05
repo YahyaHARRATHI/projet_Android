@@ -39,12 +39,16 @@ public String uid;
         final ListView listView=(ListView) findViewById(R.id.listView);
 
         matiereFirebaseListAdapter=new FirebaseListAdapter<Matiere>(this,Matiere.class,
-                android.R.layout.two_line_list_item,myFirebaseRef) {
+                R.layout.ma_ligne,myFirebaseRef) {
             @Override
             protected void populateView(View view, Matiere mat, int i) {
-                ((TextView)view.findViewById(android.R.id.text1)).setText(mat.getLibelle()+"          Ds : " + mat.getDs() +
-                        "             tp : " + mat.getTp());
-                ((TextView)view.findViewById(android.R.id.text2)).setText("                        examen : "+mat.getExamen()+ "          Moyenne : " +mat.getMoyenneMatiere());
+
+                ((TextView)view.findViewById(R.id.nomMatiere)).setText(mat.getLibelle());
+                ((TextView)view.findViewById(R.id.textViewTP)).setText(Double.toString(mat.getTp()));
+                ((TextView)view.findViewById(R.id.textViewDS)).setText(Double.toString(mat.getDs()));
+                ((TextView)view.findViewById(R.id.textViewExamen)).setText(Double.toString(mat.getExamen()));
+                ((TextView)view.findViewById(R.id.textViewMoyenne)).setText(Double.toString(mat.getMoyenneMatiere()));
+
             }
         };
 

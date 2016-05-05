@@ -4,12 +4,9 @@
     android:layout_height="match_parent"
   >
 
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="122dp"
-        android:background="#ce9422"
-        android:paddingBottom="@dimen/abc_action_bar_icon_vertical_padding_material">
+        android:layout_height="match_parent">
 
         <TextView
             android:layout_width="wrap_content"
@@ -20,92 +17,104 @@
             android:textColor="#2469e0"
             android:textStyle="bold"
             android:paddingTop="@dimen/abc_action_bar_content_inset_material"
-            android:paddingBottom="@dimen/abc_action_bar_overflow_padding_end_material" />
+            android:paddingBottom="@dimen/abc_action_bar_overflow_padding_end_material"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/Moyenne"
+            android:layout_toStartOf="@+id/Moyenne" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:paddingLeft="@dimen/abc_action_bar_icon_vertical_padding_material"
-            android:paddingBottom="@dimen/abc_action_bar_icon_vertical_padding_material">
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="0"
+            android:id="@+id/textViewDS"
+            android:layout_alignTop="@+id/textViewExamen"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="DS"
-                android:id="@+id/DsNote"
-                android:paddingLeft="@dimen/abc_action_bar_progress_bar_size" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="TP"
-                android:id="@+id/TpNote"
-                android:paddingLeft="@dimen/abc_action_bar_progress_bar_size" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Examen"
-                android:id="@+id/ExamenNote"
-                android:paddingLeft="@dimen/abc_action_bar_progress_bar_size" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Moyenne"
-                android:id="@+id/Moyenne"
-                android:paddingLeft="@dimen/abc_action_bar_progress_bar_size" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:paddingLeft="@dimen/abc_action_bar_icon_vertical_padding_material">
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="DS"
+            android:id="@+id/DsNote"
+            android:layout_alignTop="@+id/space3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="0"
-                android:id="@+id/textView"
-                android:paddingLeft="@dimen/abc_action_bar_stacked_max_height" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="TP"
+            android:id="@+id/TpNote"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_above="@+id/textViewMoyenne"
+            android:layout_toRightOf="@+id/ExamenNote"
+            android:layout_toEndOf="@+id/ExamenNote" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="0"
-                android:id="@+id/textView2"
-                android:paddingLeft="@dimen/abc_action_bar_stacked_max_height" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Examen"
+            android:id="@+id/ExamenNote"
+            android:layout_alignTop="@+id/DsNote"
+            android:layout_toRightOf="@+id/DsNote"
+            android:layout_toEndOf="@+id/DsNote"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="0"
-                android:id="@+id/textView3"
-                android:paddingLeft="@dimen/abc_action_bar_stacked_max_height"
-                android:paddingRight="@dimen/abc_action_bar_stacked_max_height" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Moyenne"
+            android:id="@+id/Moyenne"
+            android:layout_alignTop="@+id/TpNote"
+            android:layout_centerHorizontal="true" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="0"
-                android:id="@+id/textView4"
-                android:paddingLeft="@dimen/abc_action_bar_stacked_max_height" />
-        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="0"
+            android:id="@+id/textViewExamen"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_below="@+id/ExamenNote"
+            android:layout_alignLeft="@+id/ExamenNote"
+            android:layout_alignStart="@+id/ExamenNote" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="0"
+            android:id="@+id/textViewMoyenne"
+            android:layout_weight="0.08"
+            android:layout_alignTop="@+id/textViewExamen"
+            android:layout_centerHorizontal="true" />
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="0"
+            android:id="@+id/textViewTP"
+            android:layout_alignTop="@+id/textViewMoyenne"
+            android:layout_alignLeft="@+id/TpNote"
+            android:layout_alignStart="@+id/TpNote" />
+
+        <Space
+            android:layout_width="20px"
+            android:layout_height="20px"
+            android:layout_alignBottom="@+id/nomMatiere"
+            android:layout_alignRight="@+id/textViewExamen"
+            android:layout_alignEnd="@+id/textViewExamen"
+            android:id="@+id/space3" />
+    </RelativeLayout>
 
 
 </LinearLayout>
