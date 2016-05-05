@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        _loginButton.setEnabled(false);
+
 
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.AppTheme_Dark_Dialog);
@@ -87,23 +87,12 @@ public class LoginActivity extends AppCompatActivity {
         // TODO: Implement your own authentication logic here.
         final Firebase ref = new Firebase("https://luminous-heat-8924.firebaseio.com/");
 
-           /* ref.addAuthStateListener(new Firebase.AuthStateListener() {
-                @Override
-                public void onAuthStateChanged(AuthData authData) {
-                    if (authData != null) {
-                        // user is logged in
-                    } else {
-                        // user is not logged in
-                    }
-                }
-            });
 
-*/
         // Create a handler to handle the result of the authentication
         Firebase.AuthResultHandler authResultHandler = new Firebase.AuthResultHandler() {
             @Override
             public void onAuthenticated(AuthData authData) {
-               // System.out.println("loggggggggggged");
+
                 String uid=(String)authData.getUid();
                 Intent myIntent = new Intent(LoginActivity.this,ModulesActivity.class);
 
@@ -115,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
             }
             @Override
             public void onAuthenticationError(FirebaseError firebaseError) {
-                System.out.println("not loggggged");
+                System.out.println("vous n'etes pas authentifié");
 
                 // Something went wrong :(
                 switch (firebaseError.getCode()) {
